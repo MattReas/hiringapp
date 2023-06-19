@@ -1,20 +1,24 @@
-import ApplicantBox from "./components/ApplicantBox"
+
+import ApplicantGrid from "./components/ApplicantGrid"
 import './style/App.css';
 
 function App() {
-  const applicant = {
+  const applicants = [
+    {
     name: "Matt Reas",
     ePanther: "mreas",
     major: "Computer Science",
     grad: "Spring 2024",
+  }, {
+    name: "Ben Reas",
+    ePanther: "reas",
+    major: "Computer Science",
+    grad: "Fall 2025"
   }
+]
   return (
     <div className="App">
-      <header className="App-header">
-        Hiring Manager Application
-      </header>
-
-      <ApplicantBox applicant={applicant}/>
+      <ApplicantGrid applicants={applicants}/>
     </div>
   );
 }
