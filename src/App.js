@@ -9,11 +9,13 @@ function App() {
     ePanther: "mreas",
     major: "Computer Science",
     grad: "Spring 2024",
+    position: "HD1"
   }, {
     name: "Ben Reas",
     ePanther: "reas",
     major: "Computer Science",
-    grad: "Fall 2025"
+    grad: "Fall 2025",
+    position: "HD1"
   }
 ]
   return (
