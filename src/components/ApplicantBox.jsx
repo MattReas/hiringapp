@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap'
 import Nav from 'react-bootstrap/Nav'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
@@ -42,13 +41,5 @@ function ApplicantBox({applicant}) {
     )
 
 
-    // return(
-    //     <div className="applicant-box">
-    //         <h2>{applicant.name} Positon: {applicant.position}</h2>
-    //         <p>ePanther: {applicant.ePanther}</p>
-    //         <p>Major: {applicant.major} Graduation Date: {applicant.grad}</p>
-    //         <p></p>
-    //     </div>
-    // )
 }
 export default ApplicantBox;
