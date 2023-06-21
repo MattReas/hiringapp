@@ -1,26 +1,30 @@
 
-import ApplicantGrid from "./components/ApplicantGrid"
+import React, { useState } from "react";
+import ApplicantGrid from "./components/ApplicantGrid";
 import './style/App.css';
+import FilterDropdown from "./components/FilterDropDown";
 
 function App() {
   const applicants = [
     {
-    name: "Matt Reas",
-    ePanther: "mreas",
-    major: "Computer Science",
-    grad: "Spring 2024",
-    position: "HD1"
+    name: "Matt Reas", ePanther: "mreas", major: "Computer Science", grad: "Spring 2024", position: "HD1"
   }, {
-    name: "Ben Reas",
-    ePanther: "reas",
-    major: "Computer Science",
-    grad: "Fall 2025",
-    position: "HD1"
+    name: "Ben Reas", ePanther: "reas", major: "Computer Science", grad: "Fall 2025", position: "HD2"
   }
-]
+  ]
+
+  const [filterPosition, setFilterPosition] = useState("");
+
+  const filteredApplicants = filterPosition ? applicants.filter(applicant => applicant.position === filterPosition) : applicants
+ 
+  const handleFilterChange = (newPosition) => {
+    setFilterPosition(newPosition);
+  }
+
   return (
     <div className="App">
-      <ApplicantGrid applicants={applicants}/>
+      <FilterDropdown onChange={handleFilterChange}/>
+      <ApplicantGrid applicants={filteredApplicants}/>
     </div>
   );
 }

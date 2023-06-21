@@ -1,6 +1,6 @@
 import React from "react";
-import ApplicantBox from "./ApplicantBox"
-import '../style/ApplicantGrid.css'
+import ApplicantBox from "./ApplicantBox";
+import '../style/ApplicantGrid.css';
 
 function ApplicantGrid({applicants}) {
     return (
@@ -9,7 +9,7 @@ function ApplicantGrid({applicants}) {
                 <ApplicantBox key={applicant.ePanther} applicant={applicant} />
             ))}
         </div>
-    )
+    );
 }
 
 export default ApplicantGrid
