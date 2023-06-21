@@ -33,7 +33,14 @@ function ApplicantBox({applicant}) {
                 <>
                 <Card.Title>Interview Date</Card.Title>
                 <Card.Text>
-                    <DatePicker selected={interviewDate} onChange={date => setInterviewDate(date)} />
+                <DatePicker
+                    selected={interviewDate}
+                    onChange={date => setInterviewDate(date)}
+                    showTimeSelect
+                    timeIntervals={15}
+                    dateFormat="Pp"
+                />
+
                 </Card.Text>
                 </>}
             </Card.Body>
