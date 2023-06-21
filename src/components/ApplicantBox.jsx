@@ -9,7 +9,7 @@ function ApplicantBox({applicant}) {
     const [interviewDate, setInterviewDate] = useState(new Date())
     return (
         <Card>
-            <Card.Header>
+            <Card.Header> {applicant.name}
                 <Nav variant="tabs" activeKey={key} onSelect={(k) => setKey(k)}>
                     <Nav.Item>
                         <Nav.Link eventKey="#first">Info</Nav.Link>
@@ -22,7 +22,7 @@ function ApplicantBox({applicant}) {
             <Card.Body>
                 {key === "#first" &&
                 <>
-                <Card.Title>{applicant.name}: {applicant.ePanther}</Card.Title>
+                <Card.Title></Card.Title>
                 <Card.Text>
                     Position: {applicant.position}<br/>
                     Major: {applicant.major}<br/>
