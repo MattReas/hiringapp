@@ -5,6 +5,7 @@ import ApplicantGrid from "./components/ApplicantGrid";
 import './style/App.css';
 import FilterDropdown from "./components/FilterDropDown";
 import NavigationBar from "./components/Navbar";
+import ProfileCreationform from "./components/ProfileCreation";
 
 function App() {
   const applicants = [
@@ -28,6 +29,7 @@ function App() {
       <NavigationBar/>
       <FilterDropdown onChange={handleFilterChange}/>
       <ApplicantGrid applicants={filteredApplicants}/>
+      <ProfileCreationform/>
     </div>
   );
 }
