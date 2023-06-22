@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ApplicantGrid from "./components/ApplicantGrid";
 import './style/App.css';
 import FilterDropdown from "./components/FilterDropDown";
+import NavigationBar from "./components/Navbar";
 
 function App() {
   const applicants = [
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavigationBar/>
       <FilterDropdown onChange={handleFilterChange}/>
       <ApplicantGrid applicants={filteredApplicants}/>
     </div>
