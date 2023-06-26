@@ -4,8 +4,8 @@ import { Row } from "react-bootstrap";
 import Col from 'react-bootstrap/Col';
 
 function GraduationDateSelector() {
-    const [semester, setSemester] = useState('Fall')
-    const [year, setYear] = useState(new Date().getFullYear())
+    const [semester, setSemester] = useState('')
+    const [year, setYear] = useState('')
 
     const currentYear = new Date().getFullYear()
     const years = Array.from({length: 5}, (_,i) => currentYear+ i)
@@ -16,6 +16,7 @@ function GraduationDateSelector() {
         <Form.Group as={Col} md="6" controlId="semesterSelect">
         
             <Form.Select value={semester} onChange={(e) => setSemester(e.target.value)}>
+                <option value='' disabled>Select Semester</option>
                 <option value="Fall">Fall</option>
                 <option value="Spring">Spring</option>
                 <option value="Summer">Summer</option>
@@ -25,6 +26,7 @@ function GraduationDateSelector() {
         <Form.Group as={Col} md="6" controlId="yearSelect">
             
             <Form.Select value={year} onChange={(e) => setYear(e.target.value)}>
+                <option value='' disabled>Select Year</option>
                 {years.map((year) => <option key={year} value={year}>{year}</option>)}
             </Form.Select>
         </Form.Group>

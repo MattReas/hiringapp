@@ -26,6 +26,20 @@ function App() {
       grad: "Fall 2025",
       position: "HD2",
     },
+    {
+      name: "Ryan Tarpey",
+      ePanther: "rjtarpey",
+      major: "Geology",
+      grad: "Spring 2026",
+      position: "Classroom Tech",
+    },
+    {
+      name: "Quinn Tarpey",
+      ePanther: "qtarpey",
+      major: "Army",
+      grad: "Fall 2024",
+      position: "HD1"
+    },
   ];
 
   const [filterPosition, setFilterPosition] = useState("");
