@@ -1,0 +1,12 @@
+.profileCreationTitle {
+    text-align: center;
+    color: #333;
+}
+
+.profileCreationForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+  }
