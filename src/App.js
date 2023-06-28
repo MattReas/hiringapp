@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //css
 import "./style/App.css";
 // Components
-import ApplicantGrid from "./components/ApplicantGrid";
+import ApplicantGrid from "./components/ApplicantGrid.tsx";
 import FilterDropdown from "./components/FilterDropDown";
 import NavigationBar from "./components/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";

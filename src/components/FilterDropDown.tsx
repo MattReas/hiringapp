@@ -1,8 +1,13 @@
 import React from "react"
 import { Dropdown } from 'react-bootstrap'
 
-function FilterDropdown({ onChange }) {
-    const handleSelect = (e) => {
+interface FilterDropdownProps {
+    onChange: (e: string | null) => void
+}
+
+
+function FilterDropdown({ onChange }: FilterDropdownProps) {
+    const handleSelect = (e: string | null) => {
         onChange(e)
     }
 
