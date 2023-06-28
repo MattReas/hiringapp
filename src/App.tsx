@@ -56,7 +56,7 @@ function App() {
     ? applicants.filter((applicant) => applicant.position === filterPosition)
     : applicants;
 
-  const handleFilterChange = (newPosition: string | null) => {
+  const handleFilterChange = (newPosition: string | null): void => {
     if (newPosition) {
       setFilterPosition(newPosition);
     }
