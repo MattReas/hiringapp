@@ -4,8 +4,8 @@ import { Row } from "react-bootstrap";
 import Col from 'react-bootstrap/Col';
 
 function GraduationDateSelector() {
-    const [semester, setSemester] = useState('')
-    const [year, setYear] = useState('')
+    const [semester, setSemester] = useState<string>('')
+    const [year, setYear] = useState<string>('')
 
     const currentYear = new Date().getFullYear()
     const years = Array.from({length: 5}, (_,i) => currentYear+ i)

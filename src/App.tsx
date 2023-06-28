@@ -5,13 +5,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //css
 import "./style/App.css";
 // Components
-import ApplicantGrid from "./components/ApplicantGrid.tsx";
+import ApplicantGrid from "./components/ApplicantGrid";
 import FilterDropdown from "./components/FilterDropDown";
 import NavigationBar from "./components/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";
 
+interface Applicant {
+  name: string;
+  ePanther: string;
+  major: string;
+  grad: string;
+  position: string;
+}
+
 function App() {
-  const applicants = [
+  const applicants: Applicant[] = [
     {
       name: "Matt Reas",
       ePanther: "mreas",
@@ -38,18 +46,20 @@ function App() {
       ePanther: "qtarpey",
       major: "Army",
       grad: "Fall 2024",
-      position: "HD1"
+      position: "HD1",
     },
   ];
 
-  const [filterPosition, setFilterPosition] = useState("");
+  const [filterPosition, setFilterPosition] = useState<string>("");
 
   const filteredApplicants = filterPosition
     ? applicants.filter((applicant) => applicant.position === filterPosition)
     : applicants;
 
-  const handleFilterChange = (newPosition) => {
-    setFilterPosition(newPosition);
+  const handleFilterChange = (newPosition: string | null) => {
+    if (newPosition) {
+      setFilterPosition(newPosition);
+    }
   };
 
   return (
@@ -57,10 +67,15 @@ function App() {
       <div className="App">
         <NavigationBar />
         <Routes>
-          <Route path="/" element={<>
-            <FilterDropdown onChange={handleFilterChange}/>
-            <ApplicantGrid applicants={filteredApplicants}/>
-          </>} />
+          <Route
+            path="/"
+            element={
+              <>
+                <FilterDropdown onChange={handleFilterChange} />
+                <ApplicantGrid applicants={filteredApplicants} />
+              </>
+            }
+          />
           <Route path="create-profile" element={<ProfileCreationform />} />
         </Routes>
       </div>
