@@ -1,16 +1,27 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card'
 import Nav from 'react-bootstrap/Nav'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-function ApplicantBox({applicant}) {
-    const [key, setKey] = useState("#first")
-    const [interviewDate, setInterviewDate] = useState(new Date())
+interface Applicant {
+    name: string;
+    position: string;
+    major: string;
+    grad: string;
+}
+
+interface ApplicantBoxProps {
+    applicant: Applicant;
+}
+
+function ApplicantBox({applicant}: ApplicantBoxProps) {
+    const [key, setKey] = useState<string>("#first")
+    const [interviewDate, setInterviewDate] = useState<Date>(new Date())
     return (
         <Card>
             <Card.Header> {applicant.name}
-                <Nav variant="tabs" activeKey={key} onSelect={(k) => setKey(k)}>
+                <Nav variant="tabs" activeKey={key} onSelect={(k: string | null) => k && setKey(k)}>
                     <Nav.Item>
                         <Nav.Link eventKey="#first">Info</Nav.Link>
                     </Nav.Item>
@@ -35,7 +46,7 @@ function ApplicantBox({applicant}) {
                 <Card.Text>
                 <DatePicker
                     selected={interviewDate}
-                    onChange={date => setInterviewDate(date)}
+                    onChange={(date: Date) => setInterviewDate(date)}
                     showTimeSelect
                     timeIntervals={15}
                     dateFormat="Pp"
@@ -46,7 +57,6 @@ function ApplicantBox({applicant}) {
             </Card.Body>
         </Card>
     )
-
-
 }
+
 export default ApplicantBox;
