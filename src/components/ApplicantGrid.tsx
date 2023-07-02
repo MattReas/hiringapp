@@ -3,7 +3,8 @@ import ApplicantBox from "./ApplicantBox.tsx";
 import '../style/ApplicantGrid.css';
 
 interface Applicant {
-    name: string;
+    firstName: string;
+    lastName: string;
     position: string;
     major: string;
     grad: string;
