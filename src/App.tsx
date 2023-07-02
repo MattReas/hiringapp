@@ -11,7 +11,8 @@ import NavigationBar from "./components/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";
 
 interface Applicant {
-  name: string;
+  firstName: string;
+  lastName: string;
   ePanther: string;
   major: string;
   grad: string;
@@ -21,28 +22,32 @@ interface Applicant {
 function App() {
   const applicants: Applicant[] = [
     {
-      name: "Matt Reas",
+      firstName: "Matt",
+      lastName: "Reas",
       ePanther: "mreas",
       major: "Computer Science",
       grad: "Spring 2024",
       position: "HD1",
     },
     {
-      name: "Ben Reas",
+      firstName: "Ben",
+      lastName: "Reas",
       ePanther: "reas",
       major: "Computer Science",
       grad: "Fall 2025",
       position: "HD2",
     },
     {
-      name: "Ryan Tarpey",
+      firstName: "Ryan",
+      lastName: " Tarpey",
       ePanther: "rjtarpey",
       major: "Geology",
       grad: "Spring 2026",
       position: "Classroom Tech",
     },
     {
-      name: "Quinn Tarpey",
+      firstName: "Quinn",
+      lastName: " Tarpey",
       ePanther: "qtarpey",
       major: "Army",
       grad: "Fall 2024",
