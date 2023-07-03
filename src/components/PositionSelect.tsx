@@ -1,11 +1,17 @@
 import React, { useState, ChangeEvent } from "react";
 import Form from "react-bootstrap/esm/Form";
 
-function PositionSelect() {
+interface PositionSelectProps {
+    onPositionChange: (position: string) => void
+}
+
+function PositionSelect({ onPositionChange }: PositionSelectProps) {
     const [position, setPosition] = useState<string>('')
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-        setPosition(event.target.value)
+        const newPosition = event.target.value
+        setPosition(newPosition)
+        onPositionChange(newPosition)
     } 
 
     return (
