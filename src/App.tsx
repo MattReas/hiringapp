@@ -1,5 +1,6 @@
 // imports that are not components
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from 'axios'
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 //css
@@ -20,42 +21,17 @@ interface Applicant {
 }
 
 function App() {
-  const applicants: Applicant[] = [
-    {
-      firstName: "Matt",
-      lastName: "Reas",
-      ePanther: "mreas",
-      major: "Computer Science",
-      grad: "Spring 2024",
-      position: "HD1",
-    },
-    {
-      firstName: "Ben",
-      lastName: "Reas",
-      ePanther: "reas",
-      major: "Computer Science",
-      grad: "Fall 2025",
-      position: "HD2",
-    },
-    {
-      firstName: "Ryan",
-      lastName: " Tarpey",
-      ePanther: "rjtarpey",
-      major: "Geology",
-      grad: "Spring 2026",
-      position: "Classroom Tech",
-    },
-    {
-      firstName: "Quinn",
-      lastName: " Tarpey",
-      ePanther: "qtarpey",
-      major: "Army",
-      grad: "Fall 2024",
-      position: "HD1",
-    },
-  ];
-
+  const [applicants, setApplicants] = useState<Applicant[]>([])
   const [filterPosition, setFilterPosition] = useState<string>("");
+
+  useEffect(() => {
+    async function fetchApplicants() {
+      const response = await axios.get('http://localhost:3000/applicantProfiles')
+      return response.data
+    }
+  
+    fetchApplicants().then(setApplicants)
+  }, [])
 
   const filteredApplicants = filterPosition
     ? applicants.filter((applicant) => applicant.position === filterPosition)
@@ -88,4 +64,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

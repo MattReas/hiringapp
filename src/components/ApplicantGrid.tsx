@@ -26,14 +26,3 @@ function ApplicantGrid({applicants}: ApplicantGridProps) {
 }
 
 export default ApplicantGrid
-// function ApplicantGrid({applicants}) {
-//     return (
-//         <div className="applicant-grid">
-//             {applicants.map((applicant) => (
-//                 <ApplicantBox key={applicant.ePanther} applicant={applicant} />
-//             ))}
-//         </div>
-//     );
-// }
-
-// export default ApplicantGrid
