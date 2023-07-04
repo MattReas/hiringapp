@@ -70,4 +70,4 @@ function ApplicantBox({ applicant }: ApplicantBoxProps) {
   );
 }
 
-export default ApplicantBox;
+export default ApplicantBox
