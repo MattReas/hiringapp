@@ -54,15 +54,14 @@ function ApplicantBox({ applicant }: ApplicantBoxProps) {
         {key === "#interview" && (
           <>
             <Card.Title>Interview Date</Card.Title>
-            <Card.Text>
-              <DatePicker
-                selected={interviewDate}
-                onChange={(date: Date) => setInterviewDate(date)}
-                showTimeSelect
-                timeIntervals={15}
-                dateFormat="Pp"
-              />
-            </Card.Text>
+
+            <DatePicker
+              selected={interviewDate}
+              onChange={(date: Date) => setInterviewDate(date)}
+              showTimeSelect
+              timeIntervals={15}
+              dateFormat="Pp"
+            />
           </>
         )}
       </Card.Body>
@@ -70,4 +69,4 @@ function ApplicantBox({ applicant }: ApplicantBoxProps) {
   );
 }
 
-export default ApplicantBox
+export default ApplicantBox;
