@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Link } from 'react-router-dom'
 
 interface Applicant {
   firstName: string;
@@ -35,6 +36,9 @@ function ApplicantBox({ applicant }: ApplicantBoxProps) {
           <Nav.Item>
             <Nav.Link eventKey="#interview">Interview</Nav.Link>
           </Nav.Item>
+          <Nav.Item>
+            <Link to="/profile" className="nav-link"> View Profile</Link>
+            </Nav.Item>
         </Nav>
       </Card.Header>
       <Card.Body>
