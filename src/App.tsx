@@ -10,6 +10,7 @@ import ApplicantGrid from "./components/ApplicantGrid";
 import FilterDropdown from "./components/FilterDropDown";
 import NavigationBar from "./components/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";
+import ProfilePage from "./components/ProfilePage"
 
 interface Applicant {
   firstName: string;
@@ -58,6 +59,7 @@ function App() {
             }
           />
           <Route path="create-profile" element={<ProfileCreationform />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Routes>
       </div>
     </Router>
