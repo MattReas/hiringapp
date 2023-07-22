@@ -1,0 +1,15 @@
+/* Styles for InterviewCreationPage */
+.interview-creation-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+  }
+  
+  /* Styles for InterviewCreationForm */
+  .interview-creation-form {
+    width: 50%;
+    padding: 20px;
+    border: 1px solid #ccc;
+  }
