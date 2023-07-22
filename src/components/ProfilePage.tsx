@@ -1,7 +1,8 @@
 import React from "react"
 import { useLocation } from 'react-router-dom'
-import ApplicantBox from "./ApplicantBox"
-
+import Card from "react-bootstrap/Card";
+import ProfileInfo from "./ProfileInfo"
+import "../style/ProfilePage.css"
 function ProfilePage() {
     const location = useLocation()
     const { applicant } = location.state
@@ -10,7 +11,9 @@ function ProfilePage() {
         <div>
 
         <h1>Profile</h1>
-        <ApplicantBox applicant ={applicant}/>
+        <Card className="profileCard">
+            <ProfileInfo applicant={applicant}/>
+            </Card>
         </div>
     )
 }

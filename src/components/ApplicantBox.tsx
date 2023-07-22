@@ -4,10 +4,12 @@ import Nav from "react-bootstrap/Nav";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from 'react-router-dom'
+import ProfileInfo from "./ProfileInfo"
 
 interface Applicant {
   firstName: string;
   lastName: string;
+  ePanther: string;
   position: string;
   major: string;
   grad: string;
@@ -29,8 +31,6 @@ function ApplicantBox({ applicant }: ApplicantBoxProps) {
   return (
     <Card>
       <Card.Header>
-        {" "}
-        {applicant.firstName} {applicant.lastName}
         <Nav
           variant="tabs"
           activeKey={key}
@@ -51,14 +51,7 @@ function ApplicantBox({ applicant }: ApplicantBoxProps) {
         {key === "#first" && (
           <>
             <Card.Title></Card.Title>
-            <Card.Text>
-              Position: {applicant.position}
-              <br />
-              Major: {applicant.major}
-              <br />
-              Graduation: {applicant.grad}
-              <br />
-            </Card.Text>
+            <ProfileInfo applicant={applicant}/>
           </>
         )}
         {key === "#interview" && (
