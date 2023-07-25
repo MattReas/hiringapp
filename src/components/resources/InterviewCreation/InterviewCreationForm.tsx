@@ -24,7 +24,7 @@ function InterviewCreationForm() {
         "http://localhost:3000/interview-template",
         {
           templateName,
-          questions,
+          questions: questions.map(question => ({ question })),
         }
       );
 
