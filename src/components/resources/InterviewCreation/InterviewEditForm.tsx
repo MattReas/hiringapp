@@ -13,9 +13,12 @@ function InterviewEditForm({ templateId }: InterviewEditFormProps) {
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/interview-template/${templateId}`);
-        setTemplateName(response.data.templateName);
-        setQuestions(response.data.questions);
+        const templateNameResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`);
+        console.log(templateNameResponse)
+        // const templateQuestionsResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`)
+        
+        setTemplateName(templateNameResponse.data.templateName || "");
+        setQuestions(templateNameResponse.data.questions || [""]);
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error("Failed to fetch interview template", error.message);
