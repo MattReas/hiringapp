@@ -5,6 +5,10 @@ import { Form, Button } from "react-bootstrap";
 interface InterviewEditFormProps {
   templateId: string;
 }
+interface InterviewQuestion {
+  id: number;
+  question: string;
+}
 
 function InterviewEditForm({ templateId }: InterviewEditFormProps) {
   const [templateName, setTemplateName] = useState("");
@@ -13,12 +17,14 @@ function InterviewEditForm({ templateId }: InterviewEditFormProps) {
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
-        const templateNameResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`);
-        console.log(templateNameResponse)
-        // const templateQuestionsResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`)
-        
+        const templateNameResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}`);
+        const templateQuestionResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`)
+
+        // The questions are recieved as objects so we must make them an array
+        const questionsArray = (templateQuestionResponse.data as InterviewQuestion[]).map((item) => item.question);
+
         setTemplateName(templateNameResponse.data.templateName || "");
-        setQuestions(templateNameResponse.data.questions || [""]);
+        setQuestions(questionsArray || [""]);
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error("Failed to fetch interview template", error.message);
