@@ -8,7 +8,7 @@ import "./style/App.css";
 // Components
 import ApplicantGrid from "./components/ApplicantGrid";
 import FilterDropdown from "./components/FilterDropDown";
-import NavigationBar from "./components/Navbar";
+import NavigationBar from "./components/Navbar/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";
 import ProfilePage from "./components/ProfilePage";
 import InterviewCreationPage from "./components/resources/InterviewCreation/InterviewCreationPage"

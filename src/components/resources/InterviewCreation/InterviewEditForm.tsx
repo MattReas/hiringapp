@@ -17,6 +17,7 @@ function InterviewEditForm({ templateId }: InterviewEditFormProps) {
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
+        // Split into multiple try blocks
         const templateNameResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}`);
         const templateQuestionResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`)
 
