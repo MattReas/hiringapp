@@ -1,0 +1,30 @@
+.interview-template-manager {
+    font-family: Arial, sans-serif;
+}
+.interview-template-manager ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.interview-template-manager li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.interview-template-manager li:last-child {
+    border-bottom: none;
+}
+.interview-template-manager button {
+    background-color: rgb(221, 123, 57);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.interview-template-manager button:hover {
+    background-color: #0056b3;
+}
