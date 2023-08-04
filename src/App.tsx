@@ -12,7 +12,7 @@ import NavigationBar from "./components/Navbar/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";
 import ProfilePage from "./components/ProfilePage";
 import InterviewCreationPage from "./components/resources/InterviewCreation/InterviewCreationPage"
-
+import InterviewTemplateManager from "./components/resources/InterviewCreation/InterviewTemplateManager"
 
 interface Applicant {
   firstName: string;
@@ -63,6 +63,7 @@ function App() {
           <Route path="create-profile" element={<ProfileCreationform />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path='create-interviews' element={<InterviewCreationPage />} />
+          <Route path='edit-interviews' element={<InterviewTemplateManager />} />
         </Routes>
       </div>
     </Router>

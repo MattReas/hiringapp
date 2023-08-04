@@ -48,6 +48,7 @@ function InterviewEditForm({ templateId }: InterviewEditFormProps) {
     event.preventDefault();
 
     try {
+      console.log(templateName + questions)
       const response = await axios.put(
         `http://localhost:3000/interview-template/${templateId}`,
         {

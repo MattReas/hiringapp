@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 import InterviewEditForm from "./InterviewEditForm"
+import "./InterviewTemplateManager.css"
 interface Template {
     id: string;
     templateName: string;
