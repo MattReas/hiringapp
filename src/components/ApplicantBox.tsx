@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Link, useNavigate } from 'react-router-dom'
-import ProfileInfo from "./ProfileInfo"
+import ProfileInfo from "./resources/ProfilePage/ProfileInfo"
 
 interface Applicant {
   firstName: string;
