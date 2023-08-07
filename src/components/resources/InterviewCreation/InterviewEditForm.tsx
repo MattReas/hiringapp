@@ -5,6 +5,7 @@ import { Form, Button } from "react-bootstrap";
 interface InterviewEditFormProps {
   templateId: string;
 }
+
 interface InterviewQuestion {
   id: number;
   question: string;
@@ -12,20 +13,17 @@ interface InterviewQuestion {
 
 function InterviewEditForm({ templateId }: InterviewEditFormProps) {
   const [templateName, setTemplateName] = useState("");
-  const [questions, setQuestions] = useState([""]);
+  const [questions, setQuestions] = useState<InterviewQuestion[]>([]);
 
   useEffect(() => {
     const fetchTemplate = async () => {
       try {
-        // Split into multiple try blocks
         const templateNameResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}`);
-        const templateQuestionResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`)
-
-        // The questions are recieved as objects so we must make them an array
-        const questionsArray = (templateQuestionResponse.data as InterviewQuestion[]).map((item) => item.question);
+        const templateQuestionResponse = await axios.get(`http://localhost:3000/interview-template/${templateId}/questions`);
+        const questionsArray = templateQuestionResponse.data as InterviewQuestion[];
 
         setTemplateName(templateNameResponse.data.templateName || "");
-        setQuestions(questionsArray || [""]);
+        setQuestions(questionsArray || []);
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error("Failed to fetch interview template", error.message);
@@ -40,15 +38,24 @@ function InterviewEditForm({ templateId }: InterviewEditFormProps) {
 
   const handleQuestionChange = (index: number, value: string) => {
     const newQuestions = [...questions];
-    newQuestions[index] = value;
+    newQuestions[index].question = value;
     setQuestions(newQuestions);
+  };
+
+  const handleAddQuestion = () => {
+    setQuestions([
+      ...questions,
+      {
+        id: Date.now(), // temporary id, you can use any unique value here
+        question: '',
+      }
+    ]);
   };
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     try {
-      console.log(templateName + questions)
       const response = await axios.put(
         `http://localhost:3000/interview-template/${templateId}`,
         {
@@ -69,22 +76,22 @@ function InterviewEditForm({ templateId }: InterviewEditFormProps) {
 
   return (
     <Form onSubmit={handleFormSubmit} className="interview-edit-form">
-        <Form.Group controlId="templateName">
+      <Form.Group controlId="templateName">
         <Form.Label>Interview Title</Form.Label>
         <Form.Control type="text" value={templateName} onChange={e => setTemplateName(e.target.value)} />
-        </Form.Group>
-       {questions.map((question, index) => (
+      </Form.Group>
+      {questions.map((question, index) => (
         <Form.Group key={index} controlId={`question${index}`}>
-            <Form.Label>Question {index + 1}</Form.Label>
-            <Form.Control type="text" value={question} onChange={e => handleQuestionChange(index, e.target.value)} />
-            </Form.Group>
-       ))}
-       <Button variant="primary" type="button" onClick={() => setQuestions([...questions, ''])}>
-       Add Question
-       </Button>
-       <Button variant="primary" type="submit">
-       Save Changes
-       </Button>
+          <Form.Label>Question {index + 1}</Form.Label>
+          <Form.Control type="text" value={question.question} onChange={e => handleQuestionChange(index, e.target.value)} />
+        </Form.Group>
+      ))}
+      <Button variant="primary" type="button" onClick={handleAddQuestion}>
+        Add Question
+      </Button>
+      <Button variant="primary" type="submit">
+        Save Changes
+      </Button>
     </Form>
   );
 }
