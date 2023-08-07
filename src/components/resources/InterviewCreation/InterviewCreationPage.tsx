@@ -8,7 +8,6 @@ function InterviewCreationPage() {
         <div className="interview-creation-page-container"> 
         <h3>Create Interview</h3> <br/>
         <InterviewCreationForm />
-        <InterviewTemplateManager />
         </div>
     )
 }
