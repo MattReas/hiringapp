@@ -10,7 +10,7 @@ import ApplicantGrid from "./components/ApplicantGrid";
 import FilterDropdown from "./components/FilterDropDown";
 import NavigationBar from "./components/Navbar/Navbar";
 import ProfileCreationform from "./components/ProfileCreation";
-import ProfilePage from "./components/ProfilePage";
+import ProfilePage from "./components/resources/ProfilePage/ProfilePage";
 import InterviewCreationPage from "./components/resources/InterviewCreation/InterviewCreationPage"
 import InterviewTemplateManager from "./components/resources/InterviewCreation/InterviewTemplateManager"
 

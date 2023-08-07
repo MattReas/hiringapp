@@ -2,7 +2,7 @@ import React from "react"
 import { useLocation } from 'react-router-dom'
 import Card from "react-bootstrap/Card";
 import ProfileInfo from "./ProfileInfo"
-import "../style/ProfilePage.css"
+import "./ProfilePage.css"
 function ProfilePage() {
     const location = useLocation()
     const { applicant } = location.state
