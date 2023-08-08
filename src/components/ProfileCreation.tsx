@@ -14,8 +14,6 @@ function ProfileCreationform() {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [ePanther, setEPanther] = useState("")
-  const [major, setMajor] = useState("")
-  const [grad, setGrad] = useState("")
   const [position, setPosition] = useState("")
   const [semester, setSemester] = useState("")
   const [year, setYear] = useState("")
@@ -27,7 +25,6 @@ function ProfileCreationform() {
       firstName,
       lastName,
       ePanther,
-      major,
       grad: `${semester} ${year}`,
       position,
     }
