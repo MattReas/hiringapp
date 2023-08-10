@@ -3,9 +3,10 @@ import Form from "react-bootstrap/esm/Form";
 
 interface PositionSelectProps {
     onPositionChange: (position: string) => void
+    positionTitles: string[]
 }
 
-function PositionSelect({ onPositionChange }: PositionSelectProps) {
+function PositionSelect({ onPositionChange, positionTitles }: PositionSelectProps) {
     const [position, setPosition] = useState<string>('')
 
     const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -17,10 +18,9 @@ function PositionSelect({ onPositionChange }: PositionSelectProps) {
     return (
         <Form.Select aria-label="Position select" value={position} onChange={handleChange}>
             <option>Select Position</option>
-            <option value="HD1">HD1</option>
-            <option value="HD2">HD2</option>
-            <option value="Classroom Tech">Classroom Tech</option>
-            <option value="Desktop Support">Desktop Support</option>
+            {positionTitles.map(title => (
+                <option key={title} value={title}>{title}</option>
+            ))}
         </Form.Select>
     )
 }
