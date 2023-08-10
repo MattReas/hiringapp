@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
+import InterviewPostionSelector from "../Positions/InterviewPositionSelector";
 
 interface InterviewTemplateFormProps {
   onSubmit: (templateName: string, questions: string[]) => void;
@@ -9,12 +10,21 @@ interface InterviewTemplateFormProps {
 function InterviewCreationForm() {
   const [templateName, setTemplateName] = useState("");
   const [questions, setQuestions] = useState([""]);
+  const [selectedPositions, setSelectedPositions] = useState<string[]>([])
 
   const handleQuestionChange = (index: number, value: string) => {
     const newQuestions = [...questions];
     newQuestions[index] = value;
     setQuestions(newQuestions);
   };
+
+  const handlePositionChange = (position: string) => {
+    if (selectedPositions.includes(position)) {
+      setSelectedPositions(prev => prev.filter(pos => pos !== position))
+    } else {
+      setSelectedPositions(prev => [...prev, position])
+    }
+  }
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -44,6 +54,10 @@ function InterviewCreationForm() {
         <Form.Label>Interview Title</Form.Label>
         <Form.Control type="text" value={templateName} onChange={e => setTemplateName(e.target.value)} />
         </Form.Group>
+        <InterviewPostionSelector onPositionChange={handlePositionChange} selectedPositions={selectedPositions} />
+        <div>
+          Selected Positions: {selectedPositions.join(", ")}
+        </div>
        {questions.map((question, index) => (
         <Form.Group key={index} controlId={`question${index}`}>
             <Form.Label>Question {index + 1}</Form.Label>

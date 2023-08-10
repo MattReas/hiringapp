@@ -1,7 +1,8 @@
 import React from "react"
 import InterviewCreationForm from "./InterviewCreationForm"
 import "./InterviewCreationPage.css"
-import PositionCreationForm from "../PositionCreation/PositionCreatonForm"
+import PositionCreationForm from "../Positions/PositionCreation/PositionCreatonForm"
+import InterviewPostionSelector from "../Positions/InterviewPositionSelector"
 
 function InterviewCreationPage() {
     return (
