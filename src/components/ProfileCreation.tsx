@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useState, useEffect } from "react";
 import axios from 'axios'
 import "../style/ProfileCreation.css"
 import { FloatingLabel } from "react-bootstrap";
@@ -15,6 +15,7 @@ function ProfileCreationform() {
   const [lastName, setLastName] = useState("")
   const [ePanther, setEPanther] = useState("")
   const [position, setPosition] = useState("")
+  const [positionTitles, setPositionTitles] = useState<string[]>([])
   const [semester, setSemester] = useState("")
   const [year, setYear] = useState("")
 
@@ -28,14 +29,34 @@ function ProfileCreationform() {
       grad: `${semester} ${year}`,
       position,
     }
+
+    console.log(profileData)
     try {
       const response = await axios.post('http://localhost:3000/applicantProfiles', profileData)
       console.log(response.data)
     } catch (error) {
       console.error(error)
     }
+
   }
 
+  useEffect(() => {
+    const fetchPositions = async () => {
+      try {
+        const positionsResponse = await axios.get('http://localhost:3000/positions/')
+
+        const titles = positionsResponse.data.map((item: {positionTitle: string }) => item.positionTitle)
+        setPositionTitles(titles) 
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error("Failed to fetch positions", error.message)
+        } else {
+          console.log("Failed to fetch positions", error)
+        }
+      }
+    }
+    fetchPositions()
+  }, [])
 
   return (
     <div className="profileCreationForm">
@@ -73,7 +94,7 @@ function ProfileCreationform() {
         </Row>
         <Row className="mb-3 d-flex justify-content-center">
           <Form.Group as={Col} md="4">
-            <PositionSelect onPositionChange={setPosition} />
+            <PositionSelect onPositionChange={setPosition} positionTitles={positionTitles}/>
           </Form.Group>
           <Form.Group as={Col} md="8">
             <GraduationDateSelector onSemesterChange={setSemester} onYearChange={setYear} />
