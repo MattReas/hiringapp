@@ -1,0 +1,19 @@
+/* InterviewPositionSelector.css */
+.search-input {
+    /* any specific styles for the search input */
+}
+
+.dropdown-item {
+    
+    border: .5px solid #ccc;
+}
+
+.selected-dropdown-item {
+    background-color: lightblue;
+}
+.dropdown-container {
+    max-height: 100px;
+    overflow-y: auto;
+    border: 2px solid #ccc;
+    margin-bottom: 10px;
+}
